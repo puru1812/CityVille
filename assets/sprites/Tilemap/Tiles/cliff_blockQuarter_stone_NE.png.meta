@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "b677e393-57a7-46d8-9444-20017ba31089",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_blockQuarter_stone_NE": {
+      "ver": "1.0.4",
+      "uuid": "4fda9743-3822-439f-bab4-cb02f8c6ee7e",
+      "rawTextureUuid": "b677e393-57a7-46d8-9444-20017ba31089",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -49.5,
+      "trimX": 191,
+      "trimY": 263,
+      "width": 130,
+      "height": 85,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
