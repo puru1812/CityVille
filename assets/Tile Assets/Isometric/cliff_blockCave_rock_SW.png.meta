@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "36a60918-d5da-4e63-89ab-9c30d7c2924a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_blockCave_rock_SW": {
+      "ver": "1.0.4",
+      "uuid": "c698c540-a31e-4bef-833d-4a63a0220247",
+      "rawTextureUuid": "36a60918-d5da-4e63-89ab-9c30d7c2924a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -19.5,
+      "trimX": 191,
+      "trimY": 203,
+      "width": 130,
+      "height": 145,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

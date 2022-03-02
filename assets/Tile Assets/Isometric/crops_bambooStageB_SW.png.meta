@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "1397f9cc-88e1-4e39-b1db-da0e482b8326",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "crops_bambooStageB_SW": {
+      "ver": "1.0.4",
+      "uuid": "3562ab1d-c65e-4c32-bfa8-be79a5788ee8",
+      "rawTextureUuid": "1397f9cc-88e1-4e39-b1db-da0e482b8326",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3,
+      "offsetY": -28.5,
+      "trimX": 242,
+      "trimY": 245,
+      "width": 34,
+      "height": 79,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "368860ba-9ab7-4632-8fd7-c79340783f43",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "bridge_stoneRound_NW": {
+      "ver": "1.0.4",
+      "uuid": "335e54cd-b26a-4a3c-ac2d-591cfc381d75",
+      "rawTextureUuid": "368860ba-9ab7-4632-8fd7-c79340783f43",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -41.5,
+      "trimX": 188,
+      "trimY": 247,
+      "width": 136,
+      "height": 101,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

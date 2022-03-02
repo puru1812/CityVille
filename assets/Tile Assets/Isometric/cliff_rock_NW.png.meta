@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "5b79214f-4124-49b3-8f5d-71d704e012f8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_rock_NW": {
+      "ver": "1.0.4",
+      "uuid": "0ed2f45a-2275-4e8e-a5f8-4cef6d973054",
+      "rawTextureUuid": "5b79214f-4124-49b3-8f5d-71d704e012f8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 27,
+      "offsetY": -33,
+      "trimX": 245,
+      "trimY": 230,
+      "width": 76,
+      "height": 118,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

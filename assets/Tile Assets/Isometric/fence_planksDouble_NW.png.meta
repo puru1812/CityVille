@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "3127d022-395a-4602-9413-0f44dd801268",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "fence_planksDouble_NW": {
+      "ver": "1.0.4",
+      "uuid": "fe0dee82-b201-4679-b62a-ceab73809d9f",
+      "rawTextureUuid": "3127d022-395a-4602-9413-0f44dd801268",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -32,
+      "offsetY": -30,
+      "trimX": 189,
+      "trimY": 255,
+      "width": 70,
+      "height": 62,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "c1931e09-95af-485a-82e0-741bdbead79b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_diagonal_rock_NE": {
+      "ver": "1.0.4",
+      "uuid": "8acfecb3-a73a-472d-be91-64dedc9698ef",
+      "rawTextureUuid": "c1931e09-95af-485a-82e0-741bdbead79b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 8,
+      "offsetY": -20,
+      "trimX": 256,
+      "trimY": 198,
+      "width": 16,
+      "height": 156,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

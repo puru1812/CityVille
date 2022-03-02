@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "3947c025-a668-4a52-9668-1408227f8236",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "bridge_side_woodRound_NW": {
+      "ver": "1.0.4",
+      "uuid": "5ddbdc2e-c5da-404d-b976-b8268e2ddbb5",
+      "rawTextureUuid": "3947c025-a668-4a52-9668-1408227f8236",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -45.5,
+      "trimX": 188,
+      "trimY": 255,
+      "width": 133,
+      "height": 93,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

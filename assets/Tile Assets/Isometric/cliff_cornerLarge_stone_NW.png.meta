@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "0123e73f-70ca-4f10-a937-494c0d29ae73",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_cornerLarge_stone_NW": {
+      "ver": "1.0.4",
+      "uuid": "a7d12598-507e-4d5a-a80d-900e7e906280",
+      "rawTextureUuid": "0123e73f-70ca-4f10-a937-494c0d29ae73",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -42,
+      "trimX": 228,
+      "trimY": 248,
+      "width": 56,
+      "height": 100,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

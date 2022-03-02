@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "d607a259-e85b-49a5-b2e9-773f008d19a7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "crops_cornStageC_NE": {
+      "ver": "1.0.4",
+      "uuid": "272e7b56-cce6-42c2-b9dc-003c5ed6a98f",
+      "rawTextureUuid": "d607a259-e85b-49a5-b2e9-773f008d19a7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -10.5,
+      "trimX": 244,
+      "trimY": 215,
+      "width": 24,
+      "height": 103,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

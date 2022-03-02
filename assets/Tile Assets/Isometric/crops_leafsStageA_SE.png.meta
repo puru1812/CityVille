@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "ccdedf23-c7c5-4951-9093-fa6346af412c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "crops_leafsStageA_SE": {
+      "ver": "1.0.4",
+      "uuid": "37347367-81ae-40e3-a3af-8114a5dadd9a",
+      "rawTextureUuid": "ccdedf23-c7c5-4951-9093-fa6346af412c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -39.5,
+      "trimX": 241,
+      "trimY": 274,
+      "width": 30,
+      "height": 43,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

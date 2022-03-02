@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "7715ebc8-1e1a-4fe4-be86-1c57cc81a7f8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "plant_bushSmall_SW": {
+      "ver": "1.0.4",
+      "uuid": "571d5f5a-6545-46ad-a37a-777ef1311c54",
+      "rawTextureUuid": "7715ebc8-1e1a-4fe4-be86-1c57cc81a7f8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -48.5,
+      "trimX": 243,
+      "trimY": 293,
+      "width": 26,
+      "height": 23,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
