@@ -101,7 +101,7 @@ cc.Class({
 
 		}
 		if (this.tiledMapManager.checkValidWalkablePos(touchPos)) {
-			for (i = 1; i < row; i++) {
+			for (let i = 1; i < row; i++) {
 				newpos2 = cc.v2(newpos.x - row * tw, newpos.y);
 				if (this.tiledMapManager.checkValidPos(newpos2) && this.tiledMapManager.checkValidWalkablePos(newpos2)) {
 					//	////console.log("isWalkable2" + newpos);
@@ -116,7 +116,7 @@ cc.Class({
 					valid = false;
 				}
 			}
-			for (i = 1; i < col; i++) {
+			for (let i = 1; i < col; i++) {
 				newpos2 = cc.v2(newpos.x, newpos.y - col * th);
 				if (this.tiledMapManager.checkValidPos(newpos2) && this.tiledMapManager.checkValidWalkablePos(newpos2)) {
 					//	////console.log("isWalkable" + newpos);
