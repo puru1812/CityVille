@@ -130,6 +130,22 @@ cc.Class({
 		let tilePos = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, currentPos);
 		let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
 
+		//	let tempPos = cc.v2(exactPos.x + 192, exactPos.y - (col - 1) * th + 220);
+
+		let tempPos = cc.v2(exactPos.x + (col - 1) * tw + 192, exactPos.y + 220);
+
+		////////console.log("check" + tempPos);
+		if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+
+			let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+
+			let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+			let tileNode = tile.node;
+			if (validTiles.indexOf(tile) < 0)
+				validTiles.push(tile);
+			////////console.log("valid" + tempPos);
+
+		}
 		////////console.log("currentPos" + currentPos);
 		for (let i = 0; i < row; i++) {
 
@@ -167,27 +183,27 @@ cc.Class({
 			}
 
 		}
-		for (let i = 0; i < row; i++) {
-			//	for (let j = 0; j < col; j++) {
+		/*	for (let i = 0; i < row; i++) {
+				//	for (let j = 0; j < col; j++) {
 
-			let tempPos = cc.v2(exactPos.x + i * tw + 192, exactPos.y + 220);
-			////////console.log("check" + tempPos);
-			if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+				let tempPos = cc.v2(exactPos.x + i * tw + 192, exactPos.y + 220);
+				////////console.log("check" + tempPos);
+				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
-				let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
 
-				let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-				let tileNode = tile.node;
-				if (validTiles.indexOf(tile) < 0)
-					validTiles.push(tile);
-				////////console.log("valid" + tempPos);
-			} else {
-				////////console.log("invalid" + tempPos);
-			}
+					let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+					let tileNode = tile.node;
+					if (validTiles.indexOf(tile) < 0)
+						validTiles.push(tile);
+					////////console.log("valid" + tempPos);
+				} else {
+					////////console.log("invalid" + tempPos);
+				}
 
-			//}
+				//}
 
-		}
+			}*/
 		for (let i = 1; i < row; i++) {
 			for (let j = 1; j < col - 1; j++) {
 
