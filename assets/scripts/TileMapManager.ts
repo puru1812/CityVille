@@ -27,7 +27,7 @@ cc.Class({
 		let self = this;
 		this._mode = "walk";
 		this._invalidTiles = [];
-		//	this.node.on(cc.Node.EventType.TOUCH_START, function(event) { //console.log("touched"); self.HandleClickEvent(event); }, this.node);
+
 	},
 
 	getMappedTile(pos) {
