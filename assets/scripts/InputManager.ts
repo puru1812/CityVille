@@ -18,11 +18,18 @@ cc.Class({
 			type: cc.Node,
 			default: null
 		},
+		offset: {
+			default: cc.v2(0, 0)
+		},
 		tiledMapManager: {
 			type: TiledMapManager,
 			default: null
 		},
 		selectedItem: {
+			type: cc.Node,
+			default: null
+		},
+		pointerItem: {
 			type: cc.Node,
 			default: null
 		},
@@ -33,9 +40,11 @@ cc.Class({
 	},
 	onLoad() {
 		let self = this.node;
-		this.touchNode.on(cc.Node.EventType.TOUCH_START, this.HandleClickEvent, this);
+		this.touchNode.on(cc.Node.EventType.TOUCH_END, this.HandleClickEvent, this);
 		this.touchNode.on(cc.Node.EventType.MOUSE_DOWN, this.HandleClickEvent, this);
 		this.touchNode.on(cc.Node.EventType.MOUSE_WHEEL, this.moveY, this, true);
+		this.touchNode.on(cc.Node.EventType.TOUCH_START, this.HoverEvent, this, true);
+		this.touchNode.on(cc.Node.EventType.TOUCH_MOVE, this.moveAll, this, true);
 		this.touchNode.on(cc.Node.EventType.MOUSE_MOVE, this.moveX, this, true);
 		this.touchNode.on(cc.Node.EventType.MOUSE_ENTER, this.HoverEvent, this, true);
 		exports.instance = this;
@@ -46,14 +55,22 @@ cc.Class({
 
 
 		this.createObjects(this.objectLayer);
-
-
+		this.pointerItem.getComponent(cc.Sprite).spriteFrame = this.selectedItem.getComponent(cc.Sprite).spriteFrame;
+		this.pointerItem.anchorX = this.selectedItem.anchorX;
+		this.pointerItem.anchorY = this.selectedItem.anchorY;
+		this.pointerItem.height = this.selectedItem.height;
+		this.pointerItem.width = this.selectedItem.width;
 		this.deltaY = 0;
 	},
 	selectItem(int x) {
 		this.selectedItem.active = false;
 		this.selectedItem = this.items[x];
 		this.selectedItem.active = true;
+		this.pointerItem.getComponent(cc.Sprite).spriteFrame = this.selectedItem.getComponent(cc.Sprite).spriteFrame;
+		this.pointerItem.anchorX = this.selectedItem.anchorX;
+		this.pointerItem.anchorY = this.selectedItem.anchorY;
+		this.pointerItem.height = this.selectedItem.height;
+		this.pointerItem.width = this.selectedItem.width;
 	},
 	getLayerWidth() {
 
@@ -130,9 +147,9 @@ cc.Class({
 		let tilePos = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, currentPos);
 		let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
 
-		//	let tempPos = cc.v2(exactPos.x + 192, exactPos.y - (col - 1) * th + 220);
+		//	let tempPos = cc.v2(exactPos.x + this.offset.x, exactPos.y - (col - 1) * th + this.offset.y);
 
-		let tempPos = cc.v2(exactPos.x + (col - 1) * tw + 192, exactPos.y + 220);
+		let tempPos = cc.v2(exactPos.x + (col - 1) * tw + this.offset.x, exactPos.y + this.offset.y);
 
 		////////console.log("check" + tempPos);
 		if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
@@ -149,7 +166,7 @@ cc.Class({
 		////////console.log("currentPos" + currentPos);
 		for (let i = 0; i < row; i++) {
 
-			let tempPos = cc.v2(exactPos.x + i * tw / 2 + 192, exactPos.y + i * th / 2 + 220);
+			let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + i * th / 2 + this.offset.y);
 			////////console.log("check" + tempPos);
 			if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -167,7 +184,7 @@ cc.Class({
 		}
 		for (let i = 0; i < col; i++) {
 
-			let tempPos = cc.v2(exactPos.x + i * tw / 2 + 192, exactPos.y - i * th / 2 + 220);
+			let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y - i * th / 2 + this.offset.y);
 			////////console.log("check" + tempPos);
 			if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -186,7 +203,7 @@ cc.Class({
 		/*	for (let i = 0; i < row; i++) {
 				//	for (let j = 0; j < col; j++) {
 
-				let tempPos = cc.v2(exactPos.x + i * tw + 192, exactPos.y + 220);
+				let tempPos = cc.v2(exactPos.x + i * tw + this.offset.x, exactPos.y + this.offset.y);
 				////////console.log("check" + tempPos);
 				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -207,7 +224,7 @@ cc.Class({
 		for (let i = 1; i < row; i++) {
 			for (let j = 1; j < col - 1; j++) {
 
-				let tempPos = cc.v2(exactPos.x + i * tw / 2 + 192, exactPos.y + 220);
+				let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + this.offset.y);
 				////////console.log("check" + tempPos);
 				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -223,7 +240,7 @@ cc.Class({
 				} else {
 					////////console.log("invalid" + tempPos);
 				}
-				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + 192, exactPos.y + j * th / 2 + 220);
+				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y + j * th / 2 + this.offset.y);
 				////////console.log("check" + tempPos);
 				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -239,7 +256,7 @@ cc.Class({
 				} else {
 					////////console.log("invalid" + tempPos);
 				}
-				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + 192, exactPos.y - j * th / 4 + 220);
+				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y - j * th / 4 + this.offset.y);
 				////////console.log("check" + tempPos);
 				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
@@ -273,7 +290,8 @@ cc.Class({
 		newItem.parent = this.selectedItem.parent;
 		let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, touchPos);
 		let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
-		newItem.setPosition(cc.v2(exactPos.x + 192, exactPos.y + 220));
+		newItem.setPosition(cc.v2(exactPos.x + this.offset.x, exactPos.y + this.offset.y));
+		newItem.opacity = 255;
 		validTiles.forEach(element => {
 			this.tiledMapManager._invalidTiles.push(element);
 		});
@@ -295,6 +313,7 @@ cc.Class({
 		// Offset touch position cos we are offsetting camera
 		touch.x += this.camNode.position.x;
 		touch.y += this.camNode.position.y;
+		//console.log(touch + " " + this.camNode.position);
 		let touchPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(touch);
 		////////////console.log("touch " + this.tiledMapManager.checkValidPos(touchPos));
 		if (!this.tiledMapManager.checkValidPos(touchPos))
@@ -315,8 +334,6 @@ cc.Class({
 				this.currentTiles.forEach(element => {
 					let tileNode = element.node;
 					let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(newpos.x, newpos.y))
-					//this.selectedItem.setPosition(cc.v2(exactPos.x + 192, exactPos.y + 220));
-
 					let sprite = tileNode.getComponent(cc.Sprite);
 
 					tileNode.color = cc.Color.WHITE;
@@ -326,7 +343,7 @@ cc.Class({
 			tiles.forEach(element => {
 				let tileNode = element.node;
 				let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(newpos.x, newpos.y))
-				//	this.selectedItem.setPosition(cc.v2(exactPos.x + 192, exactPos.y + 220));
+				this.pointerItem.setPosition(cc.v2(exactPos.x + this.offset.x, exactPos.y + this.offset.y));
 
 				let sprite = tileNode.addComponent(cc.Sprite);
 
@@ -344,8 +361,10 @@ cc.Class({
 
 			let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, touchPos);
 			let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
-			//	this.selectedItem.setPosition(cc.v2(exactPos.x + 192, exactPos.y + 220));
-			//	sprite.spriteFrame = this.selectedItem.getComponent(cc.Sprite).spriteFrame;
+			//	this.selectedItem.setPosition(cc.v2(exactPos.x + this.offset.x, exactPos.y + this.offset.y));
+			//	sprite.spriteFrame = this.pointerItem.getComponent(cc.Sprite).spriteFrame;
+			this.pointerItem.setPosition(cc.v2(exactPos.x + this.offset.x, exactPos.y + this.offset.y));
+			this.selectItem.opacity = 50;
 
 		}
 	},
@@ -377,8 +396,14 @@ cc.Class({
 		//	this.checkValidMovePos(touchPos);
 
 	},
+	moveAll(x) {
 
 
+		this.HoverEvent(x);
+	},
+	lateUpdate(dt) {
+
+	},
 	moveY(y) {
 
 		this.deltaY = y.getScrollY();
