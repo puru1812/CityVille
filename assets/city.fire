@@ -17,7 +17,7 @@
         "__id__": 2
       },
       {
-        "__id__": 69
+        "__id__": 70
       },
       {
         "__id__": 38
@@ -88,6 +88,9 @@
       },
       {
         "__id__": 68
+      },
+      {
+        "__id__": 69
       }
     ],
     "_prefab": null,
@@ -1067,7 +1070,7 @@
       "array": [
         0,
         0,
-        614.8780366869514,
+        192.3929561094867,
         0,
         0,
         0,
@@ -3038,6 +3041,26 @@
     "_id": "84ukn+3bNG8YwofMXdQk0F"
   },
   {
+    "__type__": "cc.Mask",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
+    "_spriteFrame": null,
+    "_type": 0,
+    "_segments": 64,
+    "_N$alphaThreshold": 0.1,
+    "_N$inverted": false,
+    "_id": "eb8eqztolMK516JuBYob9d"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "AudioManager",
     "_objFlags": 0,
@@ -3048,7 +3071,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 70
+        "__id__": 71
       }
     ],
     "_prefab": null,
@@ -3104,7 +3127,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 69
+      "__id__": 70
     },
     "_enabled": true,
     "sfx": [],
