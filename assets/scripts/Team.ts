@@ -19,12 +19,17 @@ cc.Class({
 		},
 		_gameId: {
 			default: ""
+
 		},
 		_clientId: {
 			default: ""
 		},
 		teamName: {
 			type: cc.Label,
+			default: null
+		},
+		joinTeamButton: {
+			type: cc.Node,
 			default: null
 		},
 		playerParent: {
@@ -55,6 +60,7 @@ cc.Class({
 
 		this.players.push(player);
 		player.node.parent = this.playerParent;
+		player.node.setPosition(cc.v2(0, 0));
 	},
 	joinTeam() {
 		this.networkManager.joinTeam(this._id, this._gameId);

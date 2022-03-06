@@ -197,10 +197,21 @@ var server = ws.createServer(function(conn) {
 				return;
 			let teamId = result["teamId"];
 			console.log("join a  team " + teamId + " request by" + clientId);
-
+			let oldteamId = null;
+			if (result["PrevteamId"])
+				oldteamId = result["PrevteamId"];
 			game.teams.forEach((item, i) => {
 				if (item["id"] == teamId) {
-					item["clients"].push(clientId);
+					if (item["clients"].indexOf(clientId) < 0)
+						item["clients"].push(clientId);
+				}
+				if (oldteamId) {
+					if (item["id"] == oldteamId) {
+						const index = item["clients"].indexOf(5);
+						if (index > -1) {
+							item["clients"].splice(index, 1); // 2nd parameter means remove one item only
+						}
+					}
 				}
 			});
 
@@ -223,6 +234,7 @@ var server = ws.createServer(function(conn) {
 		}
 
 		break;
+
 		default:
 
 		}

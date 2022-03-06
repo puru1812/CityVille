@@ -24,13 +24,14 @@ cc.Class({
 	},
 	setTeam(team) {
 		this._team = team;
+
 	},
 	init(id, isLocal = false, manager) {
 		this._manager = manager;
 		this._id = id;
 		this._isLocalPlayer = isLocal;
 		if (this._isLocalPlayer == true) {
-			console.log("is local player");
+			//console.log("is local player");
 
 
 		}
