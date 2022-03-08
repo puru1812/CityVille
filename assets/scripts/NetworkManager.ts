@@ -197,17 +197,17 @@ cc.Class({
 		let id = "";
 		//console.log("WebSocket start");
 		this.gameIdLabel.node.on("click", this.copyTextToClipboard, this);
-		this.websocket = new WebSocket("ws://localhost:8001/");
-
+		//	this.websocket = new WebSocket("wss://cityville-server.glitch.me/");
+		this.websocket = new WebSocket("ws://localhost:3000/");
 		var self = this;
 		this.websocket.onopen = function(evt) {
 
-			//	//console.log("WebSocket start" + evt);
+			console.log("WebSocket start" + evt);
 			self.isConnected = true;
 		};
 		this.websocket.onmessage = function(evt) {
 			let data = JSON.parse(evt.data);
-			//	//console.log('method: ' + data["method"]);
+			console.log('method: ' + data["method"]);
 
 			//console.log("Recieved msg from the server " + data["method"]);
 			switch (data["method"]) {
@@ -296,7 +296,7 @@ cc.Class({
 		}
 
 		this.websocket.onclose = function(event) {
-			//console.log("Closed ");
+			console.log("Closed ");
 			self.isConnected = false;
 		}
 

@@ -1,10 +1,15 @@
-var ws = require("nodejs-websocket")
+const express = require('express');
+const ws = require('ws');
 const clients = {};
 const games = {};
-// Scream server example: "hi" -> "HI!!!"
-var server = ws.createServer(function(conn) {
+const app = express();
 
-	// generate client Id
+// Set up a headless websocket server that prints any
+// events that come in.
+const wsServer = new ws.Server({
+	noServer: true
+});
+wsServer.on('connection', conn => {
 	const clientId = guid();
 
 	clients[clientId] = {
@@ -14,17 +19,19 @@ var server = ws.createServer(function(conn) {
 		"method": "connect",
 		"clientId": clientId
 	}
-	console.log("client created" + clientId);
-	//send back the client connect
 	conn.send(JSON.stringify(payLoad));
-
+	console.log("connected client" + clientId);
 	conn.on("close", function(code, reason) {
 		console.log("Connection closed");
 	})
 	conn.on("open", function(code, reason) {
 		console.log("Connection opened");
 	})
-	conn.on("text", str => {
+
+	console.log("client created" + clientId);
+	conn.on('message', message => {
+		console.log("message" + message)
+		let str = message;
 
 		const result = JSON.parse(str);
 		console.log("Recieved message" + str);
@@ -238,15 +245,25 @@ var server = ws.createServer(function(conn) {
 		default:
 
 		}
-	})
+
+	});
 
 });
-server.listen(8001, (err) => {
+
+// `server` is a vanilla Node.js HTTP server, so use
+// the same ws upgrade process described here:
+// https://www.npmjs.com/package/ws#multiple-servers-sharing-a-single-https-server
+const server = app.listen(3000, (err) => {
 	if (!err)
 		console.log("server booted!");
 	else {
 		console.log("server err" + err);
 	}
+});
+server.on('upgrade', (request, socket, head) => {
+	wsServer.handleUpgrade(request, socket, head, socket => {
+		wsServer.emit('connection', socket, request);
+	});
 });
 
 
