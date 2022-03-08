@@ -1116,7 +1116,7 @@
       "__id__": 26
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 28
@@ -5471,6 +5471,9 @@
     "teamsContainer": {
       "__id__": 79
     },
+    "touchArea": {
+      "__id__": 27
+    },
     "generatedGameIDLabel": {
       "__id__": 110
     },
@@ -5492,7 +5495,9 @@
     "playerTeamParent": {
       "__id__": 136
     },
-    "playerTeamsAllParent": null,
+    "playerTeamsAllParent": {
+      "__id__": 136
+    },
     "_id": "ceao/tmLFG26+H98CYDNk/"
   },
   {
