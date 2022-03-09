@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "360c0ff4-02e6-4933-9ac7-16a36431c505",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "bridge_side_stoneRound_NW": {
+      "ver": "1.0.4",
+      "uuid": "f3b0cbc7-5a52-42bb-b4da-c1b91581c10b",
+      "rawTextureUuid": "360c0ff4-02e6-4933-9ac7-16a36431c505",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -45.5,
+      "trimX": 188,
+      "trimY": 255,
+      "width": 133,
+      "height": 93,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

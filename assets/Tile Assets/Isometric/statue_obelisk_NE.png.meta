@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "0de21f9e-2b8c-46d6-809e-c57210947c4b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "statue_obelisk_NE": {
+      "ver": "1.0.4",
+      "uuid": "cacb8dbc-f90e-479e-97dd-309f737ce1f5",
+      "rawTextureUuid": "0de21f9e-2b8c-46d6-809e-c57210947c4b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -30,
+      "trimX": 236,
+      "trimY": 246,
+      "width": 40,
+      "height": 80,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

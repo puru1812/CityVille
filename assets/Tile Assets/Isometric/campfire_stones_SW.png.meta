@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "32252971-eba7-4837-8c0c-c4c01fe0a71f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "campfire_stones_SW": {
+      "ver": "1.0.4",
+      "uuid": "2021de1e-d660-4017-a49f-6d2a44ff3544",
+      "rawTextureUuid": "32252971-eba7-4837-8c0c-c4c01fe0a71f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2.5,
+      "offsetY": -56.5,
+      "trimX": 229,
+      "trimY": 298,
+      "width": 49,
+      "height": 29,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

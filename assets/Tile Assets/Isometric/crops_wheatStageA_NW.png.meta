@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "cde58029-a08b-467e-9655-ce6fb2cdc732",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "crops_wheatStageA_NW": {
+      "ver": "1.0.4",
+      "uuid": "e6089866-1e29-4c8c-9c1b-c8aac8defd7f",
+      "rawTextureUuid": "cde58029-a08b-467e-9655-ce6fb2cdc732",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": -49,
+      "trimX": 233,
+      "trimY": 281,
+      "width": 48,
+      "height": 48,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

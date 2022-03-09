@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "cb775a13-6cb5-4731-b8ef-faf940916cad",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_blockSlope_stone_SE": {
+      "ver": "1.0.4",
+      "uuid": "3252a7bb-37fe-4e7f-bc68-2462c7c11005",
+      "rawTextureUuid": "cb775a13-6cb5-4731-b8ef-faf940916cad",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3,
+      "offsetY": -19.5,
+      "trimX": 185,
+      "trimY": 203,
+      "width": 136,
+      "height": 145,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

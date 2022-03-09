@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "07da64ab-bde5-45eb-9e9e-b1d269216b60",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_waterfall_rock_NE": {
+      "ver": "1.0.4",
+      "uuid": "de991d29-9560-45fc-92b7-76afa96d77b8",
+      "rawTextureUuid": "07da64ab-bde5-45eb-9e9e-b1d269216b60",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -27,
+      "offsetY": -33,
+      "trimX": 191,
+      "trimY": 230,
+      "width": 76,
+      "height": 118,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

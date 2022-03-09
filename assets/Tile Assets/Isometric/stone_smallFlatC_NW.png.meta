@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "08ce9355-b43f-4ed8-8baa-3597c4cb8f77",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "stone_smallFlatC_NW": {
+      "ver": "1.0.4",
+      "uuid": "4e786d58-a122-43e3-9f3d-48ef128fb9b1",
+      "rawTextureUuid": "08ce9355-b43f-4ed8-8baa-3597c4cb8f77",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": -57,
+      "trimX": 237,
+      "trimY": 301,
+      "width": 36,
+      "height": 24,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "89abf651-f79c-4a66-aa32-52982ea54084",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_stepsCorner_rock_SW": {
+      "ver": "1.0.4",
+      "uuid": "ef6abd93-1c41-4ef1-bb94-e9d34d13c973",
+      "rawTextureUuid": "89abf651-f79c-4a66-aa32-52982ea54084",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 4.5,
+      "offsetY": -32.5,
+      "trimX": 200,
+      "trimY": 229,
+      "width": 121,
+      "height": 119,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,7 +1,7 @@
 
 
 const TiledMapManager = require('./TileMapManager');
-
+const NetworkManager = require('./NetworkManager');
 cc.Class({
 	extends: cc.Component,
 
@@ -23,6 +23,10 @@ cc.Class({
 		},
 		tiledMapManager: {
 			type: TiledMapManager,
+			default: null
+		},
+		networkManager: {
+			type: NetworkManager,
 			default: null
 		},
 		selectedItem: {
@@ -286,6 +290,16 @@ cc.Class({
 		//console.log(validCount + "got" + validTiles.length);
 		if (validCount != validTiles.length)
 			return;
+
+		let index = this.items.indexOf(this.selectedItem);
+		let data = {
+			"index": index,
+			"touchPos": touchPos
+		}
+		this.networkManager.sendTeamEvent("request", data);
+	},
+	createItem(index, touchPos) {
+		this.selectedItem = this.items[index];
 		let newItem = cc.instantiate(this.selectedItem);
 		newItem.parent = this.selectedItem.parent;
 		let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, touchPos);
@@ -295,8 +309,6 @@ cc.Class({
 		validTiles.forEach(element => {
 			this.tiledMapManager._invalidTiles.push(element);
 		});
-
-
 	},
 	HoverEvent(event) {
 

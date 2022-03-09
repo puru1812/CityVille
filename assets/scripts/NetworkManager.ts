@@ -73,10 +73,56 @@ cc.Class({
 			type: cc.Node,
 			default: null
 		},
+		topBar: {
+			type: cc.Node,
+			default: null
+		},
+		startGameButton: {
+			type: cc.Node,
+			default: null
+		},
+	},
+	handleTeamEvent(obj) {
+		console.log("recieved" + JSON.stringify(obj));
+		let data = obj["data"];
+		console.log("type" + obj["type"]);
+		switch (obj["type"]) {
+			case "acceptRequest": {
+				let index = this.items.indexOf(this.selectedItem);
+				let type = "confirmCreate";
+
+				this.confirmPopUp.active = true;
+				this.confirmLabel.string = "Confirm create " + this.selectedItem[data["index"]].name + " at " + data["touchPos"];
+				this.confirmButton.on(cc.Node.EventType.MOUSE_DOWN, () => {
+					this.sendTeamEvent(type, data);
+				});
+				this.confirmExit.on(cc.Node.EventType.MOUSE_DOWN, () => {
+					type = "rejectCreate";
+					this.sendTeamEvent(type, data);
+					this.confirmPopUp.active = false;
+				});
+			} break;
+			case "confirm": {
+				this.gameManager.createItem(data);
+			} break;
+
+		}
+	},
+	sendTeamEvent(type, data) {
+		let teamId = this._team;
+		let id = this._clientId;
+		let gameid = this._gameId;
+		const payLoad = {
+			"method": "TeamEvent",
+			"type": type,
+			"data": data
+		}
+		payLoad["clientId"] = id;
+		payLoad["gameId"] = gameid;
+		payLoad["teamId"] = teamId;
+		this.websocket.send(JSON.stringify(payLoad));
 
 	},
-
-
 	// Create a new Game
 	createGame() {
 		let id = this._clientId;
@@ -102,11 +148,13 @@ cc.Class({
 	},
 	// join a team
 	joinTeam(teamId, gameId) {
+		this._team = teamId;
 		if (this.gameManager.myPlayer._team) {
 			// confirm exit from current team
 			const payLoad = {
 				"method": "joinTeam",
 			}
+
 			oldTeamId = this.gameManager.myPlayer.team._id;
 			payLoad["PrevteamId"] = oldTeamId;
 			payLoad["clientId"] = this._clientId;
@@ -154,28 +202,58 @@ cc.Class({
 			return;
 		this._clientId = id;
 	},
-
-	// start game
-	startGame() {
+	forceStartGame() {
 		this.touchArea.active = true;
 		this.lobby.active = false;
+		this.topBar.active = true;
 		this.gameManager.myPlayer._team.players.forEach(player => {
-			player.node.parent = this.playerTeamParent;
-			player.node.setPosition(cc.v2(0, 0));
+			let copy = cc.instantiate(player.node);
+			copy.parent = this.playerTeamParent;
+			copy.setPosition(cc.v2(0, 0));
 		});
 		this.gameManager.teams.forEach(team => {
 			team.node.parent = this.playerTeamsAllParent;
 			team.node.setPosition(cc.v2(0, 0));
 			team.joinTeamButton.active = false;
 		});
+
+
+
+	},
+
+	// start game
+	startGame() {
+		this.touchArea.active = true;
+		this.lobby.active = false;
+		this.topBar.active = true;
+		this.gameManager.myPlayer._team.players.forEach(player => {
+			let copy = cc.instantiate(player.node);
+			copy.parent = this.playerTeamParent;
+			copy.setPosition(cc.v2(0, 0));
+		});
+		this.gameManager.teams.forEach(team => {
+			team.node.parent = this.playerTeamsAllParent;
+			team.node.setPosition(cc.v2(0, 0));
+			team.joinTeamButton.active = false;
+		});
+
+		const payLoad = {
+			"method": "startGame",
+		}
+		payLoad["clientId"] = this._clientId;
+		payLoad["gameId"] = this._gameId;
+		this.websocket.send(JSON.stringify(payLoad));
+
 	},
 
 	onLoad() {
 		this.i = 0;
+		this.startGameButton.active = false;
 		this._clientId = "";
 		this._gameId = "";
 		this.lobby.active = true;
 		this.touchArea.active = false;
+		this.topBar.active = false;
 		let id = "";
 		//console.log("WebSocket start");
 		this.gameIdLabel.node.on("click", this.copyTextToClipboard, this);
@@ -203,11 +281,21 @@ cc.Class({
 					self.gameIdLabel.string = self._gameId;
 				}
 					break;
+				case "teamEvent": {
+					self.handleTeamEvent(data);
+				} break;
+				case "startedGame": {
+
+					self.forceStartGame();
+				}
+					break;
+
 				case "createdTeam": {
 					self.gameManager.createTeam(data["teamId"], data["gameId"]);
 				}
 					break;
 				case "addToTeam": {
+					self.startGameButton.active = true;
 					this._team = data.teamId;
 					self.gameManager.addToTeam(data["clientId"], data["teamId"], data["gameId"]);
 				}
@@ -247,7 +335,7 @@ cc.Class({
 
 						clients.forEach((cliID) => {
 							if (cliID == self._clientId)
-								this._team = data.teamId;
+								self._team = data.teamId;
 							self.gameManager.addToTeam(cliID, teamId, gameId);
 
 						});

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "37b2e0a3-2f1c-4c2d-8004-cc05f06f243f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_stepsCornerInner_stone_NW": {
+      "ver": "1.0.4",
+      "uuid": "db9c85a6-ff3d-44a6-9091-f929ee890eff",
+      "rawTextureUuid": "37b2e0a3-2f1c-4c2d-8004-cc05f06f243f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -32.5,
+      "trimX": 191,
+      "trimY": 229,
+      "width": 130,
+      "height": 119,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

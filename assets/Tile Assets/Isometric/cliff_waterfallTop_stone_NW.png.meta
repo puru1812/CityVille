@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "938a584b-8835-44c1-983c-1622ac30b4d1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_waterfallTop_stone_NW": {
+      "ver": "1.0.4",
+      "uuid": "71a89f64-23c2-4098-ba39-dd4df4d9d8bf",
+      "rawTextureUuid": "938a584b-8835-44c1-983c-1622ac30b4d1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 27,
+      "offsetY": -33,
+      "trimX": 245,
+      "trimY": 230,
+      "width": 76,
+      "height": 118,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

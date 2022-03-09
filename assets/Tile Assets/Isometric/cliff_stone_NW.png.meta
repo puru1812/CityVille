@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "4646e709-46b5-43c4-a910-b814c201daa5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "cliff_stone_NW": {
+      "ver": "1.0.4",
+      "uuid": "2e75fa78-55d2-48fe-af24-fe3c481b0221",
+      "rawTextureUuid": "4646e709-46b5-43c4-a910-b814c201daa5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 27,
+      "offsetY": -33,
+      "trimX": 245,
+      "trimY": 230,
+      "width": 76,
+      "height": 118,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -35,6 +35,10 @@ cc.Class({
 		},
 		myPlayer: {
 			default: null
+		},
+		inputManager: {
+			type: cc.Node,
+			default: null
 		}
 	},
 	onLoad() {
@@ -42,6 +46,9 @@ cc.Class({
 		this.myPlayer = null;
 		this._networkManager = null;
 		//	this.startPositions = this.shuffle(this.startPositions);
+	},
+	createItem(data) {
+		this.inputManager.getComponent("InputManager").createItem(data["index"], data["touchPos"])
 	},
 	init(manager) {
 		this.playersIds = [];
@@ -107,7 +114,7 @@ cc.Class({
 		//console.log("color" + color + "id" + id);
 		this.setColor(player, color);
 		player.active = true;
-		player.getComponent("Player").init(id, isSelf, this);
+		player.getComponent("Player").init(color, id, isSelf, this);
 		player.parent = this.playerPref.parent;
 		this.players.push(player.getComponent("Player"));
 		this.playersIds.push(id);
