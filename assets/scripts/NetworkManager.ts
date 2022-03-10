@@ -81,34 +81,44 @@ cc.Class({
 			type: cc.Node,
 			default: null
 		},
+		inputManager: {
+			type: cc.Node,
+			default: null
+		}
 	},
 	handleTeamEvent(obj) {
 		console.log("recieved" + JSON.stringify(obj));
 		let data = obj["data"];
-		console.log("type" + obj["type"]);
-		switch (obj["type"]) {
+
+		console.log("type" + data["type"]);
+		switch (data["type"]) {
 			case "acceptRequest": {
-				let index = this.items.indexOf(this.selectedItem);
-				let type = "confirmCreate";
+
 
 				this.confirmPopUp.active = true;
-				this.confirmLabel.string = "Confirm create " + this.selectedItem[data["index"]].name + " at " + data["touchPos"];
+				this.confirmLabel.string = "Confirm create " + this.inputManager.getComponent("InputManager").items[data.data["index"]].name + " at " + data.data["touchPos"];
 				this.confirmButton.on(cc.Node.EventType.MOUSE_DOWN, () => {
-					this.sendTeamEvent(type, data);
+
+					console.log("confirm this");
+					this.sendTeamEvent("confirmCreate", data.data);
+					this.confirmPopUp.active = false;
 				});
 				this.confirmExit.on(cc.Node.EventType.MOUSE_DOWN, () => {
-					type = "rejectCreate";
-					this.sendTeamEvent(type, data);
+
+					console.log("reject this");
+					this.sendTeamEvent("rejectCreate", data.data);
 					this.confirmPopUp.active = false;
 				});
 			} break;
 			case "confirm": {
-				this.gameManager.createItem(data);
+				console.log(JSON.stringify(data.data));
+				this.gameManager.createItem(data.data);
 			} break;
-
+			default:
 		}
 	},
 	sendTeamEvent(type, data) {
+		console.log("send" + type + "data" + JSON.stringify(data));
 		let teamId = this._team;
 		let id = this._clientId;
 		let gameid = this._gameId;

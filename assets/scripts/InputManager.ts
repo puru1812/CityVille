@@ -299,6 +299,7 @@ cc.Class({
 		this.networkManager.sendTeamEvent("request", data);
 	},
 	createItem(index, touchPos) {
+		console.log("createItem" + index, touchPos)
 		this.selectedItem = this.items[index];
 		let newItem = cc.instantiate(this.selectedItem);
 		newItem.parent = this.selectedItem.parent;
@@ -306,6 +307,7 @@ cc.Class({
 		let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
 		newItem.setPosition(cc.v2(exactPos.x + this.offset.x, exactPos.y + this.offset.y));
 		newItem.opacity = 255;
+		let validTiles = this.getValidTiles(touchPos);
 		validTiles.forEach(element => {
 			this.tiledMapManager._invalidTiles.push(element);
 		});
