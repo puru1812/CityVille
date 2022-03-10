@@ -122,7 +122,7 @@ cc.Class({
 	GetWalkableMatrixMapFromLayer(mapLayer, rows, cols, walkableEdges) {
 
 		let tilesArray = mapLayer.getTileSets();
-		console.log(tilesArray);
+		//console.log(tilesArray);
 		let copy = tilesArray; // Copy all elements.
 
 		let walkableMatrixMap = [];
@@ -139,7 +139,7 @@ cc.Class({
 				let i = r * cols + c;
 
 				if (i < copy.length) {
-					//		//console.log("value" + JSON.stringify(this.tiledMap.getPropertiesForGID(copy[i])));
+					//		////console.log("value" + JSON.stringify(this.tiledMap.getPropertiesForGID(copy[i])));
 					let properties = this.tiledMap.getPropertiesForGID(copy[i]);
 					if (properties) {
 						if (properties["isWalkable"] == true) {
@@ -148,10 +148,10 @@ cc.Class({
 							let tile = this.getMappedTile(pos);
 							if (tile) {
 								let found = false;
-								////console.log("checking"+r+","+c);
+								//////console.log("checking"+r+","+c);
 								for (let k = 0; k < this._invalidTiles.length; k++) {
 									if (this._invalidTiles[k].x == c && this._invalidTiles[k].y == r) {
-										//console.log("found invalid" + r + "," + c);
+										////console.log("found invalid" + r + "," + c);
 										found = true;
 										break;
 									}
@@ -159,14 +159,14 @@ cc.Class({
 
 
 								if (found) {
-									////console.log("this is invalid tile now" + pos);
+									//////console.log("this is invalid tile now" + pos);
 									row.push(1);
 								} else {
 
 									row.push(0);
 								}
 							} else {
-								////console.log("no tile" + pos);
+								//////console.log("no tile" + pos);
 								row.push(0);
 							}
 						} else {

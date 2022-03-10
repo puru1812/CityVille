@@ -65,7 +65,7 @@ cc.Class({
 	createTeam(teamId, gameId) {
 		if (this.teamIds.indexOf(teamId) >= 0)
 			return;
-		//console.log("creating team");
+		////console.log("creating team");
 		let newTeam = cc.instantiate(this.teamPref);
 		newTeam.parent = this.teamPref.parent;
 		newTeam.active = true;
@@ -81,37 +81,40 @@ cc.Class({
 
 			if (element.isTeam(teamId, gameId)) {
 				let player = this.getPlayer(clientId);
-				//console.log("player" + player);
+				////console.log("player" + player);
 				element.addMember(player);
 				player.setTeam(element);
+			} else {
+				element.removeMember(player);
 			}
 		});
 	},
 
 	getPlayer(clientId) {
 		for (let i = 0; i < this.players.length; i++) {
-			//console.log(this.players[i]._id + "compare" + clientId);
+			////console.log(this.players[i]._id + "compare" + clientId);
 			if (this.players[i]._id == clientId) {
-				//console.log("found player");
+				////console.log("found player");
 				return this.players[i];
 			}
 
 		}
 
-		//console.log("not found player");
+		////console.log("not found player");
 	},
 	createPlayer(id, color, isSelf = false) {
-		//console.log("Player create");
+		////console.log("Player create");
 		if (this.playersIds.indexOf(id) >= 0)
 			return;
 		let player = cc.instantiate(this.playerPref);
 
 		if (isSelf == true) {
-			console.log("found mine" + color);
+			//console.log("found mine" + color);
 			this.playerIcon.active = true;
+			this.playerIcon.getComponent("Player").init(color, id, isSelf, this);
 			this.setColor(this.playerIcon, color);
 		}
-		//console.log("color" + color + "id" + id);
+		////console.log("color" + color + "id" + id);
 		this.setColor(player, color);
 		player.active = true;
 		player.getComponent("Player").init(color, id, isSelf, this);
@@ -122,6 +125,10 @@ cc.Class({
 			this.myPlayer = player.getComponent("Player")
 		}
 
+	},
+	canStartGame() {
+		//console.log("length" + this.playerPref.parent.children.length);
+		return this.playerPref.parent.children.length <= 2;
 	},
 	shuffle(array) {
 		let currentIndex = array.length, randomIndex;

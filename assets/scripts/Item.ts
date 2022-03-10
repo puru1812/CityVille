@@ -15,7 +15,7 @@ cc.Class({
 	},
 
 	onLoad() {
-		console.log("loaded" + this.node.name);
+		//console.log("loaded" + this.node.name);
 	}
 
 });

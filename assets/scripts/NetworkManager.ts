@@ -90,35 +90,35 @@ cc.Class({
 		console.log("recieved" + JSON.stringify(obj));
 		let data = obj["data"];
 
-		console.log("type" + data["type"]);
+		//console.log("type" + data["type"]);
 		switch (data["type"]) {
 			case "acceptRequest": {
 
 
 				this.confirmPopUp.active = true;
-				this.confirmLabel.string = "Confirm create " + this.inputManager.getComponent("InputManager").items[data.data["index"]].name + " at " + data.data["touchPos"];
+				this.confirmLabel.string = this.gameManager.getPlayer(obj["clientId"])._name + " Player is requesting to create " + this.inputManager.getComponent("InputManager").items[data.data["index"]].name + " at " + data.data["touchPos"];
 				this.confirmButton.on(cc.Node.EventType.MOUSE_DOWN, () => {
 
-					console.log("confirm this");
+					//console.log("confirm this");
 					this.sendTeamEvent("confirmCreate", data.data);
 					this.confirmPopUp.active = false;
 				});
 				this.confirmExit.on(cc.Node.EventType.MOUSE_DOWN, () => {
 
-					console.log("reject this");
+					//console.log("reject this");
 					this.sendTeamEvent("rejectCreate", data.data);
 					this.confirmPopUp.active = false;
 				});
 			} break;
 			case "confirm": {
-				console.log(JSON.stringify(data.data));
+				//console.log(JSON.stringify(data.data));
 				this.gameManager.createItem(data.data);
 			} break;
 			default:
 		}
 	},
 	sendTeamEvent(type, data) {
-		console.log("send" + type + "data" + JSON.stringify(data));
+		//console.log("send" + type + "data" + JSON.stringify(data));
 		let teamId = this._team;
 		let id = this._clientId;
 		let gameid = this._gameId;
@@ -165,7 +165,7 @@ cc.Class({
 				"method": "joinTeam",
 			}
 
-			oldTeamId = this.gameManager.myPlayer.team._id;
+			oldTeamId = this.gameManager.myPlayer._team._id;
 			payLoad["PrevteamId"] = oldTeamId;
 			payLoad["clientId"] = this._clientId;
 			payLoad["gameId"] = gameId;
@@ -189,7 +189,7 @@ cc.Class({
 			payLoad["clientId"] = this._clientId;
 			payLoad["gameId"] = gameId;
 			payLoad["teamId"] = teamId;
-			//	//console.log("sending" + JSON.stringify(payLoad));
+			//	////console.log("sending" + JSON.stringify(payLoad));
 			this.websocket.send(JSON.stringify(payLoad));
 			this.teamIdLabel.string = "" + teamId;
 		}
@@ -221,8 +221,10 @@ cc.Class({
 			copy.parent = this.playerTeamParent;
 			copy.setPosition(cc.v2(0, 0));
 		});
+		//console.log("teams count" + this.gameManager.teams.length);
 		this.gameManager.teams.forEach(team => {
 			team.node.parent = this.playerTeamsAllParent;
+			team.getComponent("Team").showRank();
 			team.node.setPosition(cc.v2(0, 0));
 			team.joinTeamButton.active = false;
 		});
@@ -236,13 +238,17 @@ cc.Class({
 		this.touchArea.active = true;
 		this.lobby.active = false;
 		this.topBar.active = true;
+		//console.log("my team is" + this.gameManager.myPlayer._team._id + "has players" + this.gameManager.myPlayer._team.players.length);
 		this.gameManager.myPlayer._team.players.forEach(player => {
 			let copy = cc.instantiate(player.node);
 			copy.parent = this.playerTeamParent;
 			copy.setPosition(cc.v2(0, 0));
 		});
+		//console.log("teams count" + this.gameManager.teams.length);
+
 		this.gameManager.teams.forEach(team => {
 			team.node.parent = this.playerTeamsAllParent;
+			team.getComponent("Team").showRank();
 			team.node.setPosition(cc.v2(0, 0));
 			team.joinTeamButton.active = false;
 		});
@@ -265,19 +271,19 @@ cc.Class({
 		this.touchArea.active = false;
 		this.topBar.active = false;
 		let id = "";
-		//console.log("WebSocket start");
+		////console.log("WebSocket start");
 		this.gameIdLabel.node.on("click", this.copyTextToClipboard, this);
-		//	this.websocket = new WebSocket("wss://cityville-server.glitch.me/");
-		this.websocket = new WebSocket("ws://localhost:3000/");
+		this.websocket = new WebSocket("wss://cityville-server.glitch.me/");
+		//this.websocket = new WebSocket("ws://localhost:3000/");
 		var self = this;
 		this.websocket.onopen = function(evt) {
-			console.log("WebSocket start" + evt);
+			//console.log("WebSocket start" + evt);
 			self.isConnected = true;
 		};
 
 		this.websocket.onmessage = function(evt) {
 			let data = JSON.parse(evt.data);
-			console.log('method: ' + data["method"]);
+			//console.log('method: ' + data["method"]);
 
 			switch (data["method"]) {
 				case "connected": {
@@ -305,7 +311,8 @@ cc.Class({
 				}
 					break;
 				case "addToTeam": {
-					self.startGameButton.active = true;
+					if (self.gameManager.canStartGame())
+						self.startGameButton.active = true;
 					this._team = data.teamId;
 					self.gameManager.addToTeam(data["clientId"], data["teamId"], data["gameId"]);
 				}
@@ -362,13 +369,13 @@ cc.Class({
 		}
 
 		this.websocket.onclose = function(event) {
-			console.log("Closed ");
+			//console.log("Closed ");
 			self.isConnected = false;
 		}
 
 	},
 	copyTextToClipboard() {
-		//console.log("clicked");
+		////console.log("clicked");
 		let text = this.gameIdLabel.string + "";
 		if (!navigator.clipboard) {
 			fallbackCopyTextToClipboard(text);
@@ -376,7 +383,7 @@ cc.Class({
 		}
 
 		navigator.clipboard.writeText(text).then(function() {
-			//console.log('Async: Copying to clipboard was successful!');
+			////console.log('Async: Copying to clipboard was successful!');
 		}, function(err) {
 			console.error('Async: Could not copy text: ', err);
 		});
@@ -387,7 +394,7 @@ cc.Class({
 
 		this.i++;
 		if (this.websocket != null && this.isConnected == true) {
-			//console.log("send " + data);
+			////console.log("send " + data);
 			this.websocket.send(data);
 		}
 	},

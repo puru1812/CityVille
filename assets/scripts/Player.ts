@@ -28,14 +28,14 @@ cc.Class({
 
 	},
 	init(name, id, isLocal = false, manager) {
-		console.log("name is" + name);
+		//console.log("name is" + name);
 		this._name = name;
 		this.node.children[0].getComponent(cc.Label).string = "" + name;
 		this._manager = manager;
 		this._id = id;
 		this._isLocalPlayer = isLocal;
 		if (this._isLocalPlayer == true) {
-			//console.log("is local player");
+			////console.log("is local player");
 
 
 		}

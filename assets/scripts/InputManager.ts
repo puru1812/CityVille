@@ -85,30 +85,30 @@ cc.Class({
 	},
 	addInvalidTile(pos) {
 		if (!this.tiledMapManager.checkValidPos(pos)) { return; }
-		//	//////////////////////console.log("add inavli" + pos);
+		//	////////////////////////console.log("add inavli" + pos);
 		let tile = this.tiledMapManager.getMappedTile(pos);
 		this.tiledMapManager._invalidTiles.push(tile);
-		////////////////////////console.log("Added tile" + tile.x + "" + tile.y);
-		////////////////////////console.log("length was" + this.tiledMapManager._invalidTiles.length);
-		//////////////////////console.log("");
+		//////////////////////////console.log("Added tile" + tile.x + "" + tile.y);
+		//////////////////////////console.log("length was" + this.tiledMapManager._invalidTiles.length);
+		////////////////////////console.log("");
 	},
 	removeInvalidTile(pos) {
-		//	//////////////////////console.log("check inValidTiledone " + pos);
+		//	////////////////////////console.log("check inValidTiledone " + pos);
 		if (!this.tiledMapManager.checkValidPos(pos)) { return; }
-		//	//////////////////////console.log("remov inavlid" + pos);
+		//	////////////////////////console.log("remov inavlid" + pos);
 		let tile = this.tiledMapManager.getMappedTile(pos);
 		if (tile) {
 
 			for (let k = 0; k < this.tiledMapManager._invalidTiles.length; k++) {
 				if (this.tiledMapManager._invalidTiles[k] == tile) {
-					//	//////////////////////console.log("removed");
+					//	////////////////////////console.log("removed");
 					this.tiledMapManager._invalidTiles.splice(k, 1);
 					break;
 				}
 			}
 		}
-		//	//////////////////////console.log("length now" + this.tiledMapManager._invalidTiles.length);
-		//////////////////////console.log("");
+		//	////////////////////////console.log("length now" + this.tiledMapManager._invalidTiles.length);
+		////////////////////////console.log("");
 	},
 
 
@@ -122,24 +122,24 @@ cc.Class({
 		let i = 0;
 		if (this.objects) {
 			this.objects.forEach(element => {
-				//////////////////////console.log("Object Layer properties" + JSON.stringify(element));
+				////////////////////////console.log("Object Layer properties" + JSON.stringify(element));
 
 			});
 		}
 	},
 	getValidTiles(position) {
-		////////////console.log("getvalid tiles" + position);
+		//////////////console.log("getvalid tiles" + position);
 		let row = this.selectedItem.getComponent("Item").x;
 		let col = this.selectedItem.getComponent("Item").y;
 		let validCount = row * col;
-		////////console.log("need" + validCount);
+		//////////console.log("need" + validCount);
 		let tw = this.tiledMapManager.tiledLayer.getMapTileSize().width;
 		let th = this.tiledMapManager.tiledLayer.getMapTileSize().height;
-		//////console.log(tw + "," + th);
+		////////console.log(tw + "," + th);
 		let validTiles = [];
 		let currentPos = cc.v2(position.x, position.y);
 		if (this.tiledMapManager.checkValidPos(currentPos) && this.tiledMapManager.checkValidWalkablePos(currentPos)) {
-			//	//////////////////console.log("isWalkable2" + newpos);
+			//	////////////////////console.log("isWalkable2" + newpos);
 			let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, currentPos);
 
 			let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
@@ -147,31 +147,15 @@ cc.Class({
 			if (validTiles.indexOf(tile) < 0)
 				validTiles.push(tile);
 
-		}
-		let tilePos = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, currentPos);
-		let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
 
-		//	let tempPos = cc.v2(exactPos.x + this.offset.x, exactPos.y - (col - 1) * th + this.offset.y);
+			let tilePos = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, currentPos);
+			let exactPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(this.tiledMapManager.tiledLayer.getPositionAt(mappedPosition.x, mappedPosition.y))
 
-		let tempPos = cc.v2(exactPos.x + (col - 1) * tw + this.offset.x, exactPos.y + this.offset.y);
+			//	let tempPos = cc.v2(exactPos.x + this.offset.x, exactPos.y - (col - 1) * th + this.offset.y);
 
-		////////console.log("check" + tempPos);
-		if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+			let tempPos = cc.v2(exactPos.x + (col - 1) * tw + this.offset.x, exactPos.y + this.offset.y);
 
-			let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
-
-			let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-			let tileNode = tile.node;
-			if (validTiles.indexOf(tile) < 0)
-				validTiles.push(tile);
-			////////console.log("valid" + tempPos);
-
-		}
-		////////console.log("currentPos" + currentPos);
-		for (let i = 0; i < row; i++) {
-
-			let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + i * th / 2 + this.offset.y);
-			////////console.log("check" + tempPos);
+			//////////console.log("check" + tempPos);
 			if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
 				let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
@@ -180,35 +164,32 @@ cc.Class({
 				let tileNode = tile.node;
 				if (validTiles.indexOf(tile) < 0)
 					validTiles.push(tile);
-				////////console.log("valid" + tempPos);
-			} else {
-				////////console.log("invalid" + tempPos);
+				//////////console.log("valid" + tempPos);
+
 			}
+			//////////console.log("currentPos" + currentPos);
+			for (let i = 0; i < row; i++) {
 
-		}
-		for (let i = 0; i < col; i++) {
+				let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + i * th / 2 + this.offset.y);
+				//////////console.log("check" + tempPos);
+				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
-			let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y - i * th / 2 + this.offset.y);
-			////////console.log("check" + tempPos);
-			if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
 
-				let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+					let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+					let tileNode = tile.node;
+					if (validTiles.indexOf(tile) < 0)
+						validTiles.push(tile);
+					//////////console.log("valid" + tempPos);
+				} else {
+					//////////console.log("invalid" + tempPos);
+				}
 
-				let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-				let tileNode = tile.node;
-				if (validTiles.indexOf(tile) < 0)
-					validTiles.push(tile);
-				////////console.log("valid" + tempPos);
-			} else {
-				////////console.log("invalid" + tempPos);
 			}
+			for (let i = 0; i < col; i++) {
 
-		}
-		/*	for (let i = 0; i < row; i++) {
-				//	for (let j = 0; j < col; j++) {
-
-				let tempPos = cc.v2(exactPos.x + i * tw + this.offset.x, exactPos.y + this.offset.y);
-				////////console.log("check" + tempPos);
+				let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y - i * th / 2 + this.offset.y);
+				//////////console.log("check" + tempPos);
 				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
 					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
@@ -217,67 +198,86 @@ cc.Class({
 					let tileNode = tile.node;
 					if (validTiles.indexOf(tile) < 0)
 						validTiles.push(tile);
-					////////console.log("valid" + tempPos);
+					//////////console.log("valid" + tempPos);
 				} else {
-					////////console.log("invalid" + tempPos);
+					//////////console.log("invalid" + tempPos);
 				}
 
-				//}
+			}
+			/*	for (let i = 0; i < row; i++) {
+					//	for (let j = 0; j < col; j++) {
+	
+					let tempPos = cc.v2(exactPos.x + i * tw + this.offset.x, exactPos.y + this.offset.y);
+					//////////console.log("check" + tempPos);
+					if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+	
+						let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+	
+						let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+						let tileNode = tile.node;
+						if (validTiles.indexOf(tile) < 0)
+							validTiles.push(tile);
+						//////////console.log("valid" + tempPos);
+					} else {
+						//////////console.log("invalid" + tempPos);
+					}
+	
+					//}
+	
+				}*/
+			for (let i = 1; i < row; i++) {
+				for (let j = 1; j < col - 1; j++) {
 
-			}*/
-		for (let i = 1; i < row; i++) {
-			for (let j = 1; j < col - 1; j++) {
+					let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + this.offset.y);
+					//////////console.log("check" + tempPos);
+					if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
 
-				let tempPos = cc.v2(exactPos.x + i * tw / 2 + this.offset.x, exactPos.y + this.offset.y);
-				////////console.log("check" + tempPos);
-				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+						let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
 
-					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
-
-					let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-					let tileNode = tile.node;
-					if (validTiles.indexOf(tile) < 0)
-						validTiles.push(tile);
-
-
-					////////console.log("valid" + tempPos);
-				} else {
-					////////console.log("invalid" + tempPos);
-				}
-				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y + j * th / 2 + this.offset.y);
-				////////console.log("check" + tempPos);
-				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
-
-					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
-
-					let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-					let tileNode = tile.node;
-					if (validTiles.indexOf(tile) < 0)
-						validTiles.push(tile);
-
-
-					////////console.log("valid" + tempPos);
-				} else {
-					////////console.log("invalid" + tempPos);
-				}
-				tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y - j * th / 4 + this.offset.y);
-				////////console.log("check" + tempPos);
-				if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
-
-					let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
-
-					let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
-					let tileNode = tile.node;
-					if (validTiles.indexOf(tile) < 0)
-						validTiles.push(tile);
+						let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+						let tileNode = tile.node;
+						if (validTiles.indexOf(tile) < 0)
+							validTiles.push(tile);
 
 
-					////////console.log("valid" + tempPos);
-				} else {
-					////////console.log("invalid" + tempPos);
+						//////////console.log("valid" + tempPos);
+					} else {
+						//////////console.log("invalid" + tempPos);
+					}
+					tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y + j * th / 2 + this.offset.y);
+					//////////console.log("check" + tempPos);
+					if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+
+						let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+
+						let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+						let tileNode = tile.node;
+						if (validTiles.indexOf(tile) < 0)
+							validTiles.push(tile);
+
+
+						//////////console.log("valid" + tempPos);
+					} else {
+						//////////console.log("invalid" + tempPos);
+					}
+					tempPos = cc.v2(exactPos.x + tw + i * tw / 2 + this.offset.x, exactPos.y - j * th / 4 + this.offset.y);
+					//////////console.log("check" + tempPos);
+					if (this.tiledMapManager.checkValidPos(tempPos) && this.tiledMapManager.checkValidWalkablePos(tempPos)) {
+
+						let mappedPosition = this.tiledMapManager.GetMapPosition(this.tiledMapManager.tiledLayer, tempPos);
+
+						let tile = this.tiledMapManager.tiledLayer.getTiledTileAt(mappedPosition.x, mappedPosition.y, true);
+						let tileNode = tile.node;
+						if (validTiles.indexOf(tile) < 0)
+							validTiles.push(tile);
+
+
+						//////////console.log("valid" + tempPos);
+					} else {
+						//////////console.log("invalid" + tempPos);
+					}
 				}
 			}
-
 		}
 		return validTiles;
 
@@ -287,7 +287,7 @@ cc.Class({
 		let col = this.selectedItem.getComponent("Item").y;
 		let validCount = row * col;
 		let validTiles = this.getValidTiles(touchPos);
-		//console.log(validCount + "got" + validTiles.length);
+		////console.log(validCount + "got" + validTiles.length);
 		if (validCount != validTiles.length)
 			return;
 
@@ -299,7 +299,7 @@ cc.Class({
 		this.networkManager.sendTeamEvent("request", data);
 	},
 	createItem(index, touchPos) {
-		console.log("createItem" + index, touchPos)
+		//console.log("createItem" + index, touchPos)
 		this.selectedItem = this.items[index];
 		let newItem = cc.instantiate(this.selectedItem);
 		newItem.parent = this.selectedItem.parent;
@@ -314,11 +314,11 @@ cc.Class({
 	},
 	HoverEvent(event) {
 
-		//////////////console.log("click");
+		////////////////console.log("click");
 		if (!this.selectedItem) {
 			return;
 		}
-		////////////console.log("moving");
+		//////////////console.log("moving");
 		let map = this.tiledMapManager.node.getComponent(cc.TiledMap);
 		let rows = map.getMapSize().height;
 		let cols = map.getMapSize().width;
@@ -327,23 +327,23 @@ cc.Class({
 		// Offset touch position cos we are offsetting camera
 		touch.x += this.camNode.position.x;
 		touch.y += this.camNode.position.y;
-		//console.log(touch + " " + this.camNode.position);
+		////console.log(touch + " " + this.camNode.position);
 		let touchPos = this.tiledMapManager.tiledLayer.node.convertToNodeSpaceAR(touch);
-		////////////console.log("touch " + this.tiledMapManager.checkValidPos(touchPos));
+		//////////////console.log("touch " + this.tiledMapManager.checkValidPos(touchPos));
 		if (!this.tiledMapManager.checkValidPos(touchPos))
 			return;,
 		if (this.tiledMapManager.checkValidWalkablePos(touchPos)) {
-			////////////console.log("valid " + touchPos);
+			//////////////console.log("valid " + touchPos);
 		} else {
-			////////////console.log("invalid " + touchPos);
+			//////////////console.log("invalid " + touchPos);
 		}
 		//
 		let newpos = touchPos;
 		if (this.tiledMapManager.checkValidWalkablePos(newpos)) {
-			////////////console.log("touchpos" + touchPos);
-			////////////console.log("getvalid tiles" + newpos);
+			//////////////console.log("touchpos" + touchPos);
+			//////////////console.log("getvalid tiles" + newpos);
 			let tiles = this.getValidTiles(newpos);
-			////////console.log("got tiles" + tiles.length);
+			//////////console.log("got tiles" + tiles.length);
 			if (this.currentTiles) {
 				this.currentTiles.forEach(element => {
 					let tileNode = element.node;
@@ -361,7 +361,7 @@ cc.Class({
 
 				let sprite = tileNode.addComponent(cc.Sprite);
 
-				//////console.log(element.x + "," + element.y + "pos" + cc.v2(newpos.x, newpos.y));
+				////////console.log(element.x + "," + element.y + "pos" + cc.v2(newpos.x, newpos.y));
 				//	sprite.spriteFrame = this.selectedItem.getComponent(cc.Sprite).spriteFrame;
 				tileNode.color = cc.Color.YELLOW;
 				this.node.runAction(cc.sequence(
@@ -386,7 +386,7 @@ cc.Class({
 
 	HandleClickEvent(event) {
 
-		//////////////console.log("click");
+		////////////////console.log("click");
 		if (!this.selectedItem) {
 			return;
 		}
@@ -430,7 +430,7 @@ cc.Class({
 		if (!this.deltaX)
 			this.deltaX = x.getLocationX();
 		let mag = x.getLocationX() - this.deltaX;
-		//////////////////////console.log(x.getLocationX() + ":" + mag);
+		////////////////////////console.log(x.getLocationX() + ":" + mag);
 		mag = mag + Math.sign(mag) * 1;
 		this.camNode.setPosition(this.camNode.getPosition().x + mag, this.camNode.getPosition().y);
 		this.deltaX = x.getLocationX();
